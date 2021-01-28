@@ -1,0 +1,14 @@
+---
+# tasks tools file for basic
+
+# Update repository d'apt
+- name: Update all packahes to the latest version
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+
+# Installe les paquets de base
+- name: Install tools basics
+  apt:
+    name: '{{ packages }}'

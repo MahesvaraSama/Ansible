@@ -1,0 +1,22 @@
+---
+# tasks local file for basic
+
+# Configure la TimeZone
+- name: Set Timezone to timezone_default
+  timezone:
+    name: '{{ timezone_default }}'
+
+# Ajoute les langues dans le repositorie de langue
+- name: Generate locales
+  locale_gen:
+    name: '{{ locales }}'
+    state: present
+
+# Modifie la langue locale choisie par default
+- name: Set default locale
+  lineinfile:
+    dest: /etc/default/locale
+    regexp: '^LANG=.*$'
+    line: 'LANG={{ language }}'
+    create: yes
+    state: present

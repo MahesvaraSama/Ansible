@@ -1,0 +1,10 @@
+---
+# tasks main file for basic
+
+# Configure le locale language & timezone
+- name: Modification local
+  include_tasks: local.yml
+
+# Installe les paquets
+- name: Install packages basics
+  include_tasks: tools.yml

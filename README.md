@@ -20,7 +20,7 @@ apt install ansible
 
 ### Installation 
 
-Après avoir cloné le repositorie il faudra sois mettre a chaque commande Ansible le roles_path `--playbook-dir=BASEDIR` soit changer le **role_path** d'Ansible pour qu'il puisse cibler celui-ci. Vous devez aller dans ce fichier `/etc/ansible/ansible.cfg` et Intégrer cette ligne dans ce fichier `inventory = C:/Users/Mahesvara/Desktop/Ansible/hosts` ansi que `role_path = C:/Users/Mahesvara/Desktop/Ansible/roles`.
+Après avoir cloné le repositorie il faudra sois mettre a chaque commande Ansible le roles_path `--playbook-dir=BASEDIR` soit changer le **role_path** d'Ansible pour qu'il puisse cibler celui-ci. Vous devez aller dans ce fichier `/etc/ansible/ansible.cfg` et Intégrer cette ligne dans ce fichier `inventory = ~/path/ansible/hosts` ansi que `role_path = ~/path/ansible/roles`.
 Après cela il n'a plus qu'a détailler vos hosts dans un fichier hosts dans le dossier que vous venez de cibler. 
 Voici un exemple de la configuration de ce fichier :
 ```shell script

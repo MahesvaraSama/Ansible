@@ -1,0 +1,22 @@
+---
+# defaults file for basi
+
+
+hostname: nazarick
+
+timezone_default: Europe/Paris
+language: fr_FR.UTF-8
+#language: LANG=
+
+locales:
+  - fr_FR.UTF-8
+  - en_EN.UTF-8
+
+rpmd:
+  - sudo
+  - bash-completion
+  - unzip
+  - vim
+  - net-tools
+  - wget
+  - gitc
