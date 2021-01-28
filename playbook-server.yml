@@ -1,5 +1,5 @@
 ---
-
+# Playbook de lancement du nouveau serveur
 - hosts: server
   roles:
     - basic
