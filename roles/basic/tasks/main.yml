@@ -8,3 +8,12 @@
 # Installe les paquets
 - name: Install packages basics
   include_tasks: tools.yml
+
+# Changement du Hostname
+- name: Change Hostname
+  include_tasks: hostname.yml
+  when: ansible_hostname != inventory_hostname
+
+# verifie la correspondance des hostnames
+- name: Validation ansible_hostname == inventory_hostname
+  assert: { that: 'ansible_hostname == inventory_hostname' }

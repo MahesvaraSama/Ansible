@@ -7,7 +7,6 @@
     update_cache: yes
     upgrade: dist
 
-
 # Installe les paquets de base
 - name: Install tools basics
   apt:
