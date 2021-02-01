@@ -1,6 +1,5 @@
 ---
 # Playbook de lancement du nouveau serveur
-#ansible-playbook playbook-server.yml -kK --become
-- hosts: server
+- hosts: raspi
   roles:
     - basic

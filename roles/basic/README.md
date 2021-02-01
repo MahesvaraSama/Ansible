@@ -1,7 +1,9 @@
 Role Basic
 =========
 
-Permet de changer le nom de l'hostname de changer la date + la langue par défaut et installe les paquets utiles sur le serveur pour ainsi permettre d'automatiser les nouveaux serveurs
+Permet de changer le nom de hostname de changer la date + la langue par défaut et installe les paquets utiles sur le serveur pour ainsi permettre d'automatiser les nouveaux serveurs
+
+Pour lancer le playbook `ansible-playbook playbook-server.yml -kK --become`
 
 Requirements
 ------------

@@ -6,11 +6,11 @@
   hostname:
     name: '{{ hostname }}'
 
-# Ajoute le new hostname & delete le old hostname dans /etc/hosts
-- name: Fix /etc/hosts removing the old hostname
+# Ajoute le new hostname & delete le old hostname dans /etc/hosts.old
+- name: Fix /etc/hosts.old removing the old hostname
   lineinfile:
     state: present
-    dest: /etc/hosts
+    dest: /etc/hosts.old
     regexp: '^{{ ansible_default_ipv4.address }}'
     line: '{{ ansible_default_ipv4.address }} {{ inventory_hostname }} {{ ansible_hostname }}'
 
