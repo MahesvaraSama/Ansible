@@ -6,11 +6,12 @@
   timezone:
     name: '{{ timezone_default }}'
 
-# Ajoute les langues dans le repositorie de langue
+# Ajoute les langues dans le repository de langue
 - name: Generate locales
   locale_gen:
-    name: '{{ locales }}'
+    name: '{{ item }}'
     state: present
+  loop: "{{ locales }}"
 
 # Modifie la langue locale choisie par default
 - name: Set default locale

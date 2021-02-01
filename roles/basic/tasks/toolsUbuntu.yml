@@ -1,0 +1,16 @@
+---
+# tasks tools for Ubuntu file for basic
+
+# Cette tache update les repos de apt
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+    update_cache: yes
+
+# Installe les paquets de bases
+- name: Install Tools basics
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages: "{{ rpms }}"

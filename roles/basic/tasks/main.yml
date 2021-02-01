@@ -1,19 +1,25 @@
 ---
 # tasks main file for basic
 
+#Installe les paquets pour CentOS
+- name: Install packages basic CentOS
+  include_tasks: toolsCentOS.yml
+  when: ansible_distribution == 'CentOS'
+
+# Installe les paquets pour Ubuntu
+- name: Install packages basic Ubuntu
+  include_tasks: toolsUbuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
 # Configure le locale language & timezone
 - name: Modification local
   include_tasks: local.yml
-
-# Installe les paquets
-- name: Install packages basics
-  include_tasks: tools.yml
 
 # Changement du Hostname
 - name: Change Hostname
   include_tasks: hostname.yml
   when: ansible_hostname != inventory_hostname
 
-# verifie la correspondance des hostnames
-- name: Validation ansible_hostname == inventory_hostname
-  assert: { that: 'ansible_hostname == inventory_hostname' }
+# verifie la correspondance des hostname
+- name: Validation ansible_hostname == hostname
+  assert: { that: 'ansible_hostname == hostname' }

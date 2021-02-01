@@ -1,7 +1,7 @@
 Role Basic
 =========
 
-Permet d'automatiser les nouveaux serveurs
+Permet de changer le nom de l'hostname de changer la date + la langue par défaut et installe les paquets utiles sur le serveur pour ainsi permettre d'automatiser les nouveaux serveurs
 
 Requirements
 ------------

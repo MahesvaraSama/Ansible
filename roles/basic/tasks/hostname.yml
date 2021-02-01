@@ -4,7 +4,7 @@
 # Change le Hostname
 - name: Change the hostname to our standard
   hostname:
-    name: '{{ hostname_short }}.{{ hostname_domain }}'
+    name: '{{ hostname }}'
 
 # Ajoute le new hostname & delete le old hostname dans /etc/hosts
 - name: Fix /etc/hosts removing the old hostname
@@ -14,14 +14,7 @@
     regexp: '^{{ ansible_default_ipv4.address }}'
     line: '{{ ansible_default_ipv4.address }} {{ inventory_hostname }} {{ ansible_hostname }}'
 
-# Relance la machine
-- name: restart machine
-  command: shutdown -r now "Ansible updates triggered"
-  async: 0
-  poll: 0
-  ignore_errors: True
-  when: reboot is defined
-
-# Attend que la machine revienne
-- name: Waiting for server to come back up
-    local_action: 'wait_for host="{{ inventory_hostname }}" state=started'
+## Relance la machine
+- name: Reboot a machine
+  reboot:
+    reboot_timeout: 3600

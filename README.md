@@ -12,7 +12,7 @@ Voici quelques liens utiles :
 
 ### Pré-requis 
 ce projet nécessitait D'avoir certaines dépendances au préalable.
-Tout d'abord il nous faut évidemment l'element principale de ce projet Ansible, Pour cela voici la commande pour pourvoir télécharger Ansible depuis une ligne de commande sur MINT :
+Tout d'abord il nous faut évidemment l'element principale de ce projet Ansible, Pour cela voici la commande pour pourvoir télécharger Ansible depuis la ligne de commande :
 ```shell script
 apt intstall python3
 apt install ansible
@@ -20,7 +20,7 @@ apt install ansible
 
 ### Installation 
 
-Après avoir cloné le repositorie il faudra sois mettre a chaque commande Ansible le roles_path `--playbook-dir=BASEDIR` soit changer le **role_path** d'Ansible pour qu'il puisse cibler celui-ci. Vous devez aller dans ce fichier `/etc/ansible/ansible.cfg` et Intégrer cette ligne dans ce fichier `inventory = ~/path/ansible/hosts` ansi que `role_path = ~/path/ansible/roles`.
+Après avoir cloné le repository il faudra sois mettre a chaque commande Ansible le roles_path `--playbook-dir=BASEDIR` soit changer le **role_path** d'Ansible pour qu'il puisse cibler celui-ci. Vous devez aller dans ce fichier `/etc/ansible/ansible.cfg` et Intégrer cette ligne dans ce fichier `inventory = ~/path/ansible/hosts` ansi que `role_path = ~/path/ansible/roles`.
 Après cela il n'a plus qu'a détailler vos hosts dans un fichier hosts dans le dossier que vous venez de cibler. 
 Voici un exemple de la configuration de ce fichier :
 ```shell script
@@ -35,7 +35,7 @@ Il faut tester votre connexion entre les slaves Ansible avec cette commande :
 ansible [name] -m ping
 ```
 dans **[name]** vous pourrez choisir entre un host, un groupe d'host ou tous les hosts avec `all`.
-Il n'y a plus qu'a installer python avec Ansible sur les hosts avec cette commande : `ansible [name] -m raw -a "yum install -y python3"` 
+Il n'y a plus qu'a installer python avec Ansible sur les hosts avec cette commande : `ansible [name] -m raw -a "yum install -y python3" --user -k -> (if passwd)` 
 
 ## Démarrage
 
