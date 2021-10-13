@@ -26,13 +26,10 @@ Voici un exemple de la configuration de ce fichier :
 ```shell script
 [docker]
 192.168.122.236
-
-[docker:vars]
-ansible_user=root
 ```
 Il faut tester votre connexion entre les slaves Ansible avec cette commande :
 ```shell script
-ansible [name] -m ping
+ansible [name] -m ping -u ubuntu --ask-pass
 ```
 dans **[name]** vous pourrez choisir entre un host, un groupe d'host ou tous les hosts avec `all`.
 Il n'y a plus qu'a installer python avec Ansible sur les hosts avec cette commande : `ansible [name] -m raw -a "yum install -y python3" --user -k -> (if passwd)` 

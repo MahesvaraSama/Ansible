@@ -6,6 +6,7 @@
   apt:
     upgrade: dist
     update_cache: yes
+    autoclean: yes
 
 # Installe les paquets de bases
 - name: Install Tools basics

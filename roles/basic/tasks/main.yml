@@ -20,6 +20,10 @@
   include_tasks: hostname.yml
   when: ansible_hostname != inventory_hostname
 
+#Configuration des utilisateurs
+- name: Modification User
+  include_tasks: users.yaml
+
 # verifie la correspondance des hostname
 - name: Validation ansible_hostname == hostname
   assert: { that: 'ansible_hostname == hostname' }
