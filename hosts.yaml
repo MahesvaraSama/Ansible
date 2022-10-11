@@ -1,4 +1,10 @@
----
 all:
-  hosts:
-    192.168.0.101:
+  children:
+    servers:
+      hosts:
+        raspi:
+          ansible_host: 192.168.1.20
+          ansible_python_interpreter: /usr/bin/python3
+        albedo:
+          ansible_host: 192.168.1.10
+          ansible_python_interpreter: /usr/bin/python3

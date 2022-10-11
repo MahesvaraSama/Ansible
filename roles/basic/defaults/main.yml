@@ -1,7 +1,7 @@
 ---
 # defaults file for basic
 
-hostname: nazarick
+hostname: albedo
 
 timezone_default: Europe/Paris
 language: fr_FR.UTF-8
@@ -19,6 +19,11 @@ rpms:
   - git
   - telnet
   - curl
+  - apt-transport-https
+  - ca-certificates
+  - software-properties-common
+  - plocate
 
 users:
+  - talfaza
   - mahes

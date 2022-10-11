@@ -1,0 +1,45 @@
+---
+  # Ajoute la KEY GPG Officiel de Docker
+  - name: Add Docker s official GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  # Vérification de la key avec le fingerprint
+  - name: Verify that we have the key with the fingerprint
+    apt_key:
+      id: 0EBFCD88
+      state: present
+
+  # Récupère le repository de Docker
+  - name: Set up the stable repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu jammy stable
+      state: present
+
+  # Update les packages
+  - name: Update apt packages
+    apt:
+      update_cache: yes
+
+  # Install Docker
+  - name: Install docker
+    apt:
+      name: docker-ce
+      state: present
+      update_cache: yes
+
+  # Rajoute les utilisateurs dans le groupe docker
+  - name: Add remote "mahes" user to "docker" group
+    user:
+      name: "{{ item }}"
+      group: "docker"
+      append: yes
+    with_items: "{{ users }}"
+
+  # Install Docker Compose
+  - name: Install docker-compose
+    get_url: 
+      url : https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64
+      dest: /usr/local/bin/docker-compose
+      mode: 'u+x,g+x'

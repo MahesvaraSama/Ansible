@@ -1,6 +1,7 @@
 ---
 # Playbook de lancement du nouveau serveur
-- hosts: raspi
+- hosts: albedo
   become: yes
+  remote_user: "mahes"
   roles:
     - basic

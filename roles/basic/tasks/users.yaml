@@ -1,8 +1,16 @@
+   # Check if user exist already
+  - name: Get users info
+    ansible.builtin.getent:
+      database: passwd
+  - set_fact:
+      users_present: "{{ getent_passwd.keys()|list }}"
+      
   - name: "Création de nouvel utilisateur"
     user:
       name: "{{ item }}"
-      groups: "admin"
+      groups: "adm"
     with_items: "{{ users }}"
+    when: users_present != item.users
 
   - name: "Ajout des autorisations pas clé SSH"
     authorized_key:
@@ -10,15 +18,9 @@
       key: "{{ lookup('file', 'files/'+ item + '.key.pub') }}"
     with_items: "{{ users }}"
 
-  - name: "Autoriser l'utilisateurs à sudo sans mot de passe"
-    lineinfile:
-      dest: "/etc/sudoers"
-      state: "present"
-      regexp: "^%admin"
-      line: "%admin ALL=(ALL) NOPASSWD: ALL"
-
-  - name: "Suppresion utilisateur Ubuntu"
-    user:
-      name: ubuntu
-      state: absent
-      remove: yes
+  # - name: "Autoriser l'utilisateurs à sudo sans mot de passe"
+  #   lineinfile:
+  #     dest: "/etc/sudoers"
+  #     state: "present"
+  #     regexp: "^%admin"
+  #     line: "%admin ALL=(ALL) NOPASSWD: ALL"

@@ -3,27 +3,46 @@
 
 #Installe les paquets pour CentOS
 - name: Install packages basic CentOS
-  include_tasks: toolsCentOS.yml
+  include_tasks: tools_centos.yml
   when: ansible_distribution == 'CentOS'
+  tags :
+    - basic_tools
 
 # Installe les paquets pour Ubuntu
 - name: Install packages basic Ubuntu
-  include_tasks: toolsUbuntu.yml
+  include_tasks: tools_ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
+  tags :
+    - basic_tools
 
 # Configure le locale language & timezone
 - name: Modification local
   include_tasks: local.yml
+  tags :
+    - basic_tools
 
 # Changement du Hostname
 - name: Change Hostname
   include_tasks: hostname.yml
   when: ansible_hostname != inventory_hostname
+  tags :
+    - basic_tools
 
-#Configuration des utilisateurs
+# Configuration des utilisateurs
 - name: Modification User
   include_tasks: users.yaml
+  tags :
+    - basic_tools
 
 # verifie la correspondance des hostname
 - name: Validation ansible_hostname == hostname
   assert: { that: 'ansible_hostname == hostname' }
+  tags:
+    - reboot
+
+# Installation de Docker & Docker-Compose
+- name: Installation Docker & Docker-Compose
+  include_tasks: docker_ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags:
+      - docker
